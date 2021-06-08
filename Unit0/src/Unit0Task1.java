@@ -2,8 +2,8 @@ public class Unit0Task1
 {
     public static void main(String[] args)
     {
-        int a = (int) (Math.random()*20000-1000);
-        //int a=-1290;
+       // int a = (int) (Math.random()*2000-1000);
+        int a=-1290;
         String b = Integer.toString(a);//переводим число в строку
         int lennum = b.length();//получаем кол-во чимволов строки
 
@@ -32,7 +32,7 @@ public class Unit0Task1
 
         if (a < 0)
         {
-            lennum -= 1; //абстрактно выреаем минус из строки
+            lennum -= 1;
             if (lennum == 1) {
                 System.out.println("Число отрицательное и однозначное");
             }
