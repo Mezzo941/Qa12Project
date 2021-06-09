@@ -1,21 +1,32 @@
 import java.util.Scanner;
 
 public class TicTacToe {
-    public TicTacToe() {
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[][] field = new int[][]{{8, 8, 8}, {8, 8, 8}, {8, 8, 8}};
-        boolean gamerez = false;
+        boolean gamerez = false, switchnum = false;
+
+        for(int i = 0; i < 3; ++i) {
+            for(int j = 0; j < 3; ++j) {
+                System.out.print(field[i][j] + " ");
+            }
+
+            System.out.println();
+        }
+
+
+        String cross="Сейчас ходят крестики",zero="Сейчас ходят нолики",str=cross;
 
         for(int a = 0; a < 9 && !gamerez; ++a) {
+            System.out.println(str);
             System.out.print("Введите i: ");
             int q = sc.nextInt();
             System.out.print("Введите j: ");
             int w = sc.nextInt();
-            System.out.print("Введите x или 0: ");
-            field[q][w] = sc.nextInt();
+            if (switchnum==false){
+            field[q][w] = 1;switchnum=true;str=zero;}
+            else {field[q][w]=0;switchnum=false;str=cross;}
 
             int zcheck;
             int ccheck;
