@@ -6,11 +6,11 @@ public class PCsettings {
     String hdd;
     int cycles;
 
-    public void WriteInfo(String bstone, String bram, String bhdd, int bcycles) {
-        stone = bstone;
-        ram = bram;
-        hdd = bhdd;
-        cycles = bcycles;
+    public void WriteInfo(String stone, String ram, String hdd, int cycles) {
+        this.stone = stone;
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cycles = cycles;
     }
 
     public void PrintInfo() {
