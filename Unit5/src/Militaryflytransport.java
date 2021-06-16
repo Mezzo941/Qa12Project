@@ -2,8 +2,7 @@ public class Militaryflytransport extends Flytransport {
     boolean jump;
     int rocketcount;
 
-    public Militaryflytransport(double power, int mass, int maxspeed, String brand, int wingspan, int runwaylength,
-                                boolean jump, int rocketcount) {
+    public Militaryflytransport(double power, int mass, int maxspeed, Brand brand, int wingspan, int runwaylength, boolean jump, int rocketcount) {
         super(power, mass, maxspeed, brand, wingspan, runwaylength);
         this.jump = jump;
         this.rocketcount = rocketcount;

@@ -2,8 +2,7 @@ public class Publicflytransport extends Flytransport {
     int passengercount;
     boolean businessclass;
 
-    public Publicflytransport(double power, int mass, int maxspeed, String brand, int wingspan, int runwaylength,
-                              int passengercount, boolean businessclass) {
+    public Publicflytransport(double power, int mass, int maxspeed, Brand brand, int wingspan, int runwaylength, int passengercount, boolean businessclass) {
         super(power, mass, maxspeed, brand, wingspan, runwaylength);
         this.passengercount = passengercount;
         this.businessclass = businessclass;

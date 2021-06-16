@@ -3,7 +3,7 @@ import java.lang.annotation.Target;
 public class Havygroundtransport extends Groundtansport {
     int lift;
 
-    public Havygroundtransport(double power, int mass, int maxspeed, String brand, int wheelcount, int fuel, int lift) {
+    public Havygroundtransport(double power, int mass, int maxspeed, Brand brand, int wheelcount, int fuel, int lift) {
         super(power, mass, maxspeed, brand, wheelcount, fuel);
         this.lift = lift;
     }
