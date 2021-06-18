@@ -1,0 +1,3 @@
+public enum Brand {
+    AUDI,FORD,BMW,BOING,AIRBUS,BELAZ, STEALTH;
+}
