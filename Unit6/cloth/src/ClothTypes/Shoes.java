@@ -22,13 +22,13 @@ public class Shoes implements ClothAbilitys {
 
     @Override
     public void takeOff() {
-        System.out.println("обувь " + brandName+" снята");
-        brandName = " ";
+        System.out.println("обувь " + brandName + " снята");
+        setBrandName(" ");
     }
 
     @Override
     public void putOn(String brandName) {
-        this.brandName = brandName;
-        System.out.println("обувь " + brandName+" надета");
+        setBrandName(brandName);
+        System.out.println("обувь " + brandName + " надета");
     }
 }

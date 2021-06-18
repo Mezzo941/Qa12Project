@@ -24,12 +24,12 @@ public class Pants implements ClothAbilitys {
     @Override
     public void takeOff() {
         System.out.println("Штаны " + brandName + " сняты");
-        brandName = " ";
+        setBrandName(" ");
     }
 
     @Override
     public void putOn(String brandName) {
-        this.brandName = brandName;
+        setBrandName(brandName);
         System.out.println("Штаны " + brandName + " надеты");
     }
 }

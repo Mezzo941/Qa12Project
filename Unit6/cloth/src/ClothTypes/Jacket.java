@@ -23,13 +23,13 @@ public class Jacket implements ClothAbilitys {
 
     @Override
     public void takeOff() {
-        System.out.println("куртка " + brandName+" снята");
-        brandName = " ";
+        System.out.println("куртка " + brandName + " снята");
+        setBrandName(" ");
     }
 
     @Override
     public void putOn(String brandName) {
-        this.brandName = brandName;
-        System.out.println("куртка " + brandName+ " надета");
+        setBrandName(brandName);
+        System.out.println("куртка " + brandName + " надета");
     }
 }
