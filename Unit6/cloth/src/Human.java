@@ -58,9 +58,9 @@ public class Human implements HumanTemplate {
 
     @Override
     public void takeOffAllCloth() {
-        this.jacket.setBrandName(" ");
-        this.pants.setBrandName(" ");
-        this.shoes.setBrandName(" ");
+        this.jacket.takeOff();
+        this.pants.takeOff();
+        this.shoes.takeOff();
         System.out.println(name + " cейчас снял c себя все вещи");
     }
 }
