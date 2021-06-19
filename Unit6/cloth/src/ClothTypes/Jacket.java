@@ -1,6 +1,5 @@
 package ClothTypes;
 
-import ClothAbilitys.ClothAbilitys;
 
 public class Jacket implements ClothAbilitys {
 
@@ -10,16 +9,20 @@ public class Jacket implements ClothAbilitys {
         this.brandName = brandName;
     }
 
+    public Jacket() {
+    }
+
+
+    @Override
     public String getBrandName() {
         return brandName;
     }
 
+    @Override
     public void setBrandName(String brandName) {
         this.brandName = brandName;
     }
 
-    public Jacket() {
-    }
 
     @Override
     public void takeOff() {

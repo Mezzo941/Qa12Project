@@ -1,7 +1,5 @@
 package ClothTypes;
 
-import ClothAbilitys.ClothAbilitys;
-
 public class Shoes implements ClothAbilitys {
     private String brandName;
 
@@ -9,15 +7,17 @@ public class Shoes implements ClothAbilitys {
         this.brandName = brandName;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public Shoes() {
     }
 
+    @Override
     public void setBrandName(String brandName) {
         this.brandName = brandName;
     }
 
-    public Shoes() {
+    @Override
+    public String getBrandName() {
+        return brandName;
     }
 
     @Override

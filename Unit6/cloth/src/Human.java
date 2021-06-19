@@ -1,41 +1,24 @@
+import ClothTypes.ClothAbilitys;
 import ClothTypes.Jacket;
-import ClothTypes.Pants;
-import ClothTypes.Shoes;
 
-public class Human {
+public class Human implements HumanTemplate {
 
     private String name;
-    private Jacket jacket;
-    private Pants pants;
-    private Shoes shoes;
+    private ClothAbilitys jacket;
+    private ClothAbilitys pants;
+    private ClothAbilitys shoes;
 
-    public String getName() {
-        return name;
-    }
-
-    public Jacket getJacket() {
-        return jacket;
-    }
-
-    public Pants getPants() {
-        return pants;
-    }
-
-    public Shoes getShoes() {
-        return shoes;
-    }
-
-    public Human(String name, Jacket jacket, Pants pants, Shoes shoes) {
+    public Human(String name, ClothAbilitys jacket, ClothAbilitys pants, ClothAbilitys shoes) {
         this(name, jacket, pants);
         this.shoes = shoes;
     }
 
-    public Human(String name, Jacket jacket, Pants pants) {
+    public Human(String name, ClothAbilitys jacket, ClothAbilitys pants) {
         this(name, jacket);
         this.pants = pants;
     }
 
-    public Human(String name, Jacket jacket) {
+    public Human(String name, ClothAbilitys jacket) {
         this.name = name;
         this.jacket = jacket;
     }
@@ -44,20 +27,40 @@ public class Human {
         this.name = name;
     }
 
-    public void putOnAllCloth(String pants, String jacket, String shoes) {
-        this.pants.putOn(pants);
+    public String getName() {
+        return name;
+    }
+
+    public ClothAbilitys getJacket() {
+        return jacket;
+    }
+
+    public ClothAbilitys getPants() {
+        return pants;
+    }
+
+    public ClothAbilitys getShoes() {
+        return shoes;
+    }
+
+
+
+
+
+    @Override
+    public void putOnAllCloth(String jacket, String pants, String shoes) {
         this.jacket.putOn(jacket);
+        this.pants.putOn(pants);
         this.shoes.putOn(shoes);
         System.out.println(name + " cейчас одел себя в " + this.jacket.getBrandName() + ", " + this.pants.getBrandName() +
                 " и " + this.shoes.getBrandName());
     }
 
+    @Override
     public void takeOffAllCloth() {
-        this.pants.setBrandName(" ");
         this.jacket.setBrandName(" ");
+        this.pants.setBrandName(" ");
         this.shoes.setBrandName(" ");
         System.out.println(name + " cейчас снял c себя все вещи");
     }
-
-
 }

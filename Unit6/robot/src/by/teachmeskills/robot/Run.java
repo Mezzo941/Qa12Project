@@ -25,7 +25,7 @@ public class Run {
         Robot robotBySamsung = new Robot(new SamsungHead(7),new SamsungHand(4),new SamsungLeg(5));
         Robot robotByToshiba = new Robot(new ToshibaHead(10),new ToshibaHand(5),new ToshibaLeg(6));
 
-        robotBySamsung.getHand().upHand();
+        robotBySamsung.getLeg().step();
         robotBySony.getHand().upHand();
         robotBySamsung.setHead(robotBySony.getHead());
         System.out.println(robotBySamsung.getHead().getPrice());
