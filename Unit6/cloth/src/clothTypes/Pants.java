@@ -1,17 +1,14 @@
-package ClothTypes;
+package clothTypes;
 
-
-public class Jacket implements ClothAbilitys {
+public class Pants implements ClothAbilitys {
 
     private String brandName;
 
-    public Jacket(String brandName) {
+    public Pants(String brandName) {
         this.brandName = brandName;
     }
-
-    public Jacket() {
+    public Pants() {
     }
-
 
     @Override
     public String getBrandName() {
@@ -23,16 +20,15 @@ public class Jacket implements ClothAbilitys {
         this.brandName = brandName;
     }
 
-
     @Override
     public void takeOff() {
-        System.out.println("куртка " + brandName + " снята");
+        System.out.println("Штаны " + brandName + " сняты");
         setBrandName(" ");
     }
 
     @Override
     public void putOn(String brandName) {
         setBrandName(brandName);
-        System.out.println("куртка " + brandName + " надета");
+        System.out.println("Штаны " + brandName + " надеты");
     }
 }

@@ -1,4 +1,4 @@
-package ClothTypes;
+package clothTypes;
 
 public interface ClothAbilitys {
     public void takeOff();

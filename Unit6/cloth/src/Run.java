@@ -1,7 +1,6 @@
-import ClothTypes.ClothAbilitys;
-import ClothTypes.Jacket;
-import ClothTypes.Pants;
-import ClothTypes.Shoes;
+import clothTypes.Jacket;
+import clothTypes.Pants;
+import clothTypes.Shoes;
 
 public class Run {
     public static void main(String[] args) {

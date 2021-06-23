@@ -8,14 +8,20 @@ public class Robot implements IRobot {
     private IHead head;
     private IHand hand;
     private ILeg leg;
+    private String name;
 
-    public Robot(IHead head, IHand hand, ILeg leg) {
+    public Robot(IHead head, IHand hand, ILeg leg, String name) {
         this.head = head;
         this.hand = hand;
         this.leg = leg;
+        this.name = name;
     }
 
     public Robot(){}
+
+    public String getName() {
+        return name;
+    }
 
     public IHead getHead() {
         return head;
@@ -70,4 +76,5 @@ public class Robot implements IRobot {
         }
         System.out.println("Пляски закончены");
     }
+
 }

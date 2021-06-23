@@ -1,5 +1,4 @@
-import ClothTypes.ClothAbilitys;
-import ClothTypes.Jacket;
+import clothTypes.ClothAbilitys;
 
 public class Human implements HumanTemplate {
 

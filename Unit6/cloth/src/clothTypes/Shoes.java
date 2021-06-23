@@ -1,4 +1,4 @@
-package ClothTypes;
+package clothTypes;
 
 public class Shoes implements ClothAbilitys {
     private String brandName;
