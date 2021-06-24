@@ -37,7 +37,7 @@ public class TextFormater extends Unit7Task2 {
 
         for (int i = 0; i < this.string1.length; i++) {
             this.string1[i]=this.string1[i].trim();
-            if (WordsCounter(this.string1[i]) >= 3 && WordsCounter(this.string1[i]) <= 5 || getPoly(this.string1[i])) {
+            if (wordsCounter(this.string1[i]) >= 3 && wordsCounter(this.string1[i]) <= 5 || getPoly(this.string1[i])) {
                 this.string2[index] = this.string1[i];
                 index++;
             }
@@ -55,7 +55,7 @@ public class TextFormater extends Unit7Task2 {
     }
 
 
-    public int WordsCounter(String str) {
+    public int wordsCounter(String str) {
 
         String buffStr = "";
         String[] finalString = new String[50];
@@ -82,11 +82,13 @@ public class TextFormater extends Unit7Task2 {
 
     public static void main(String[] args) {
 
+        //Чтобы все работало - в конце предложения должна стоять точка
+
         String[] story = {"Я ел мясо.", "Тимми не нравится городская мадам, поэтому он возвращается домой.", "Тимми ел городских котов.",
                 "Старушка рада любой находке и не теряет оптимизма и хорошего настроения."};
-        String[] story1 = {"      В моей машине сломался недавно купленный ротор.    ", "Папа, мне не нужны деньги.", "кабкуак.", "Кошкин маленький комочек.", "Кошкин комок."};
+        String[] story1 = {"      В моей машине сломался недавно купленный ротор.    ", "Папа, мне не нужны деньги.", " кабкуак.  ", "Кошкин маленький комочек.", "Кошкин комок."};
         String[] finalStory = new String[20];
-        TextFormater text = new TextFormater(story1, finalStory);
+        TextFormater text = new TextFormater(story, finalStory);
         text.printFinalText();
     }
 }

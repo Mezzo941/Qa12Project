@@ -1,6 +1,6 @@
 public class Unit7Task2 {
 
-    public static String strReverse(String str) {
+    public String strReverse(String str) {
 
         String reverseStr = "";
 
@@ -11,22 +11,7 @@ public class Unit7Task2 {
     }
 
     public boolean getPoly(String str) {
-
-        String firstStr = "";
-        String secondStr = "";
-        int firstIndex = 0;
-        int lastIndex;
-
-        if (str.length() % 2 == 1 && str.length()>1) {
-            lastIndex = (str.length() - 1) / 2;
-            firstStr = str.substring(firstIndex, lastIndex);
-
-            firstIndex = (str.length() - 1) / 2 + 1;
-            lastIndex = str.length() - 1;
-            secondStr = str.substring(firstIndex, lastIndex + 1);
-        } else return false;
-
-        if (firstStr.equals(strReverse(secondStr))) {
+        if (str.equals(strReverse(str)) && str.length()>2) {
             return true;
         } else {
             return false;
@@ -38,7 +23,7 @@ public class Unit7Task2 {
         Unit7Task2 poly = new Unit7Task2();
         String[] a = {"букваешка", "топот", "джава", "колокол", "лол", "молококолом"};
 
-        System.out.println(poly.getPoly(a[1]));
+        System.out.println(poly.getPoly(a[0]));
         System.out.println("Полиндромы: ");
         for (int i = 0; i < a.length; i++) {
             if (poly.getPoly(a[i])) {
