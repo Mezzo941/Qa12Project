@@ -3,11 +3,13 @@ package Shops;
 import Products.Product;
 
 public interface PreShop {
-    public void printProductList();
+    void printProductList();
 
-    public boolean productAdd(Product product);
+    void productRemove(int id);
 
-    public void productRemove(int id);
+    void productChange(int id, String name, int price);
 
-    public void productChange(Product product, String name, int price);
+    boolean productAdd(Product product);
+
+    boolean hasFoundId(int id);
 }

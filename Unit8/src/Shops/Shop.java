@@ -3,7 +3,6 @@ package Shops;
 import Products.Product;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Shop implements PreShop {
 
@@ -13,6 +12,17 @@ public class Shop implements PreShop {
         return productList;
     }
 
+    @Override
+    public boolean hasFoundId(int id) {
+        boolean result = false;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
 
     @Override
     public boolean productAdd(Product product) {
@@ -20,34 +30,55 @@ public class Shop implements PreShop {
         if (productList.isEmpty()) {
             productList.add(product);
         } else {
-            for (int i = 0; i < productList.size(); i++) {
-                if (productList.get(i).getId() == product.getId()) {
-                    check = false;
-                    break;
-                }
+            if (hasFoundId(product.getId())){
+                check = false;
             }
-            if (check) {
-                productList.add(product);
-            }
+            else productList.add(product);
         }
         return check;
     }
 
+
     @Override
     public void productRemove(int id) {
-        productList.remove(id);
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                productList.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
-    public void productChange(Product product, String name, int price) {
-        product.setName(name);
-        product.setPrice(price);
+    public void productChange(int id, String name, int price) {
+        int index = 0;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                index = i;
+                break;
+            }
+        }
+        productList.get(index).setName(name);
+        productList.get(index).setPrice(price);
     }
 
     @Override
     public void printProductList() {
+        System.out.println("Список товаров магазина:");
         for (Product p : productList) {
             System.out.println(p);
+        }
+    }
+
+    public void printWithoutSort(String msg) {
+        if (productList.isEmpty()) {
+            System.out.println();
+            System.out.println(msg);
+            System.out.println();
+        } else {
+            System.out.println();
+            printProductList();
+            System.out.println();
         }
     }
 

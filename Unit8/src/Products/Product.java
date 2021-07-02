@@ -1,7 +1,7 @@
 package Products;
 
-public class Product implements PreProduct{
-    private int id;
+public class Product {
+    private final int id;
     private String name;
     private int price;
 
@@ -33,6 +33,6 @@ public class Product implements PreProduct{
 
     @Override
     public String toString() {
-        return id + " " + name + " " + price;
+        return "ID: " + id + " Наименование товара: " + name + " Стоимость товара: " + price + " USD";
     }
 }
