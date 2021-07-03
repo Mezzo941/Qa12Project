@@ -3,7 +3,7 @@ package Shops;
 import Products.Product;
 
 public interface PreShop {
-    void printProductList();
+    void printProductList(String msg);
 
     void productRemove(int id);
 

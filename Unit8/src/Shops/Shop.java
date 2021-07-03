@@ -1,8 +1,11 @@
 package Shops;
 
+import Menu.MenuOptions;
 import Products.Product;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Shop implements PreShop {
 
@@ -30,10 +33,9 @@ public class Shop implements PreShop {
         if (productList.isEmpty()) {
             productList.add(product);
         } else {
-            if (hasFoundId(product.getId())){
+            if (hasFoundId(product.getId())) {
                 check = false;
-            }
-            else productList.add(product);
+            } else productList.add(product);
         }
         return check;
     }
@@ -63,23 +65,14 @@ public class Shop implements PreShop {
     }
 
     @Override
-    public void printProductList() {
-        System.out.println("Список товаров магазина:");
-        for (Product p : productList) {
-            System.out.println(p);
+    public void printProductList(String msg) {
+        if (!productList.isEmpty()) {
+            System.out.println("Список товаров магазина:");
+            for (Product p : productList) {
+                System.out.println(p);
+            }
         }
-    }
-
-    public void printWithoutSort(String msg) {
-        if (productList.isEmpty()) {
-            System.out.println();
-            System.out.println(msg);
-            System.out.println();
-        } else {
-            System.out.println();
-            printProductList();
-            System.out.println();
-        }
+        else System.out.println(msg);
     }
 
 }

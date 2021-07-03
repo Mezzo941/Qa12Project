@@ -1,48 +1,53 @@
-import Products.Product;
-import Shops.Shop;
+package Shops;
 
+import Menu.MainMenu;
+import Menu.SortListMenu;
+import Products.Product;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ShopManagement {
 
+    private final Shop shop = new Shop();
 
     private static int hasIntCheckInput() {
-        int number;
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNextInt()) {
-            number = scanner.nextInt();
+            int number = scanner.nextInt();
             scanner.nextLine();
-            scanner.reset();
             if (number < 0) return -1;
             else return number;
         } else return -1;
     }
 
-    public static void main(String[] args) {
+    public void startMenu() {
+
         Scanner scanner = new Scanner(System.in);
-        Shop shop = new Shop();
+        MainMenu mainMenu = new MainMenu();
+        SortListMenu sortListMenu = new SortListMenu();
+
         int switcher;
-        boolean status1 = true;
-        boolean status2 = true;
+        boolean statusOfMainMenu = true;
+        boolean statusOfPrintMenu = true;
 
         String msgOfEmptyList = "Список товаров пуст.";
         String msgOfValue = "Введите корректное значение";
         String msgOfMatchId = "Товар с данным ID не найден в списке";
 
-        while (status1) {
-            System.out.println("Выберите действие:");
-            System.out.println("1. Добавить товар");
-            System.out.println("2. Удалить товар");
-            System.out.println("3. Редактировать товар");
-            System.out.println("4. Отобразить список товаров");
-            System.out.println("5. Выход");
-            System.out.print("Для действия введите номер пункта: ");
+        while (statusOfMainMenu) {
+            mainMenu.printMainMenu();
             switcher = hasIntCheckInput();
             System.out.println();
 
             switch (switcher) {
                 case 1: {
+
                     int id;
+                    String name;
+                    int price;
+
                     while (true) {
                         System.out.print("Введите ID товара: ");
                         id = hasIntCheckInput();
@@ -55,9 +60,8 @@ public class ShopManagement {
                     }
 
                     System.out.print("Введите наименование товара: ");
-                    String name = scanner.nextLine();
+                    name = scanner.nextLine();
 
-                    int price;
                     while (true) {
                         System.out.print("Введите цену товара в USD: ");
                         price = hasIntCheckInput();
@@ -88,7 +92,7 @@ public class ShopManagement {
                             } else if (shop.hasFoundId(id)) {
                                 shop.productRemove(id);
                                 System.out.println();
-                                shop.printProductList();
+                                shop.printProductList(msgOfEmptyList);
                                 System.out.println();
                                 break;
                             } else {
@@ -141,15 +145,8 @@ public class ShopManagement {
                 }
 
                 case 4: {
-                    while (status2) {
-                        System.out.println("Выберите тип сортировки:");
-                        System.out.println("1. По возрастанию цены");
-                        System.out.println("2. По убыванию цены");
-                        System.out.println("3. В обратом порядке добавления товар");
-                        System.out.println("4. Без сортировки");
-                        System.out.println("5. Вернуться в меню");
-                        System.out.print("Для действия введите номер пункта: ");
-
+                    while (statusOfPrintMenu) {
+                        sortListMenu.printSortListMenu();
                         switcher = hasIntCheckInput();
 
                         switch (switcher) {
@@ -163,11 +160,11 @@ public class ShopManagement {
                                 break;
                             }
                             case 4: {
-                                shop.printWithoutSort(msgOfEmptyList);
+                                shop.printProductList(msgOfEmptyList);
                                 break;
                             }
                             case 5: {
-                                status2 = false;
+                                statusOfPrintMenu = false;
                                 break;
                             }
                             default: {
@@ -176,14 +173,16 @@ public class ShopManagement {
                             }
                         }
                     }
-                }
-
-                case 5: {
-                    status1 = false;
+                    System.out.println();
                     break;
                 }
 
-                default:{
+                case 5: {
+                    statusOfMainMenu = false;
+                    break;
+                }
+
+                default: {
                     System.out.println(msgOfValue);
                     System.out.println();
                 }
