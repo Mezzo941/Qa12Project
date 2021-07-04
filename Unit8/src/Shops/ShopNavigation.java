@@ -2,15 +2,24 @@ package Shops;
 
 import Menu.MainMenu;
 import Menu.SortListMenu;
+import Products.sorting.ComparatorByPriceDown;
+import Products.sorting.ComparatorByPriceUp;
 import Products.Product;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Scanner;
 
-public class ShopManagement {
+public class ShopNavigation {
 
     private final Shop shop = new Shop();
+
+    /*public ShopNavigation() {
+        shop.getProductList().add(new Product(90, "bbbb", 4500));
+        shop.getProductList().add(new Product(5, "aaaa", 10000));
+        shop.getProductList().add(new Product(20, "yyyy", 80));
+        shop.getProductList().add(new Product(8, "xxxx", 6000));
+        shop.getProductList().add(new Product(2, "dddd", 3000));
+        shop.getProductList().add(new Product(0, "cccc", 4000));
+    }*/
 
     private static int hasIntCheckInput() {
         Scanner scanner = new Scanner(System.in);
@@ -66,8 +75,8 @@ public class ShopManagement {
                         System.out.print("Введите цену товара в USD: ");
                         price = hasIntCheckInput();
                         if (price == -1) {
-                            System.out.println();
                             System.out.println(msgOfValue);
+                            System.out.println();
                         } else {
                             break;
                         }
@@ -81,26 +90,26 @@ public class ShopManagement {
                     while (true) {
                         if (shop.getProductList().isEmpty()) {
                             System.out.println(msgOfEmptyList);
-                            System.out.println();
                             break;
                         } else {
                             System.out.print("Введите ID товара, который вы хотите удалить: ");
                             int id = hasIntCheckInput();
                             if (id == -1) {
                                 System.out.println("Введите корректное значение");
-                                System.out.println();
-                            } else if (shop.hasFoundId(id)) {
-                                shop.productRemove(id);
-                                System.out.println();
-                                shop.printProductList(msgOfEmptyList);
-                                System.out.println();
-                                break;
                             } else {
-                                System.out.println(msgOfMatchId);
-                                System.out.println();
+                                if (shop.hasFoundId(id)) {
+                                    shop.productRemove(id);
+                                    System.out.println();
+                                    shop.printProductList(shop.getProductList(), msgOfEmptyList);
+                                    System.out.println();
+                                    break;
+                                } else {
+                                    System.out.println(msgOfMatchId);
+                                }
                             }
                         }
                     }
+                    System.out.println();
                     break;
                 }
 
@@ -109,31 +118,36 @@ public class ShopManagement {
                         System.out.println(msgOfEmptyList);
                         System.out.println();
                     } else {
+
                         int id;
+                        String name;
+                        int price;
+
                         while (true) {
                             System.out.print("Введите ID товара, который вы хотите изменить: ");
                             id = hasIntCheckInput();
                             if (id == -1) {
                                 System.out.println(msgOfValue);
                                 System.out.println();
-                            } else if (shop.hasFoundId(id)) {
-                                break;
                             } else {
-                                System.out.println(msgOfMatchId);
-                                System.out.println();
+                                if (shop.hasFoundId(id)) {
+                                    break;
+                                } else {
+                                    System.out.println(msgOfMatchId);
+                                    System.out.println();
+                                }
                             }
                         }
 
                         System.out.print("Введите наименование товара: ");
-                        String name = scanner.nextLine();
+                        name = scanner.nextLine();
 
-                        int price;
                         while (true) {
                             System.out.print("Введите цену товара в USD: ");
                             price = hasIntCheckInput();
                             if (price == -1) {
-                                System.out.println();
                                 System.out.println(msgOfValue);
+                                System.out.println();
                             } else {
                                 break;
                             }
@@ -148,19 +162,23 @@ public class ShopManagement {
                     while (statusOfPrintMenu) {
                         sortListMenu.printSortListMenu();
                         switcher = hasIntCheckInput();
+                        System.out.println();
 
                         switch (switcher) {
                             case 1: {
+                                shop.productSort(shop.getProductList(), new ComparatorByPriceUp(), msgOfEmptyList);
                                 break;
                             }
                             case 2: {
+                                shop.productSort(shop.getProductList(), new ComparatorByPriceDown(), msgOfEmptyList);
                                 break;
                             }
                             case 3: {
+                                shop.printReverseProductList(shop.getProductList(), msgOfEmptyList);
                                 break;
                             }
                             case 4: {
-                                shop.printProductList(msgOfEmptyList);
+                                shop.printProductList(shop.getProductList(), msgOfEmptyList);
                                 break;
                             }
                             case 5: {

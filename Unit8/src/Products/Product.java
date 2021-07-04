@@ -1,5 +1,7 @@
 package Products;
 
+import java.util.Comparator;
+
 public class Product {
     private final int id;
     private String name;
@@ -36,3 +38,4 @@ public class Product {
         return "ID: " + id + " Наименование товара: " + name + " Стоимость товара: " + price + " USD";
     }
 }
+
