@@ -8,17 +8,18 @@ import Products.Product;
 
 import java.util.Scanner;
 
-public class ShopNavigation {
+public class ShopBuilder {
 
-    private final Shop shop = new Shop();
+    private final ShopOptions shopOptions = new ShopOptions();
 
-    /*public ShopNavigation() {
-        shop.getProductList().add(new Product(90, "bbbb", 4500));
-        shop.getProductList().add(new Product(5, "aaaa", 10000));
-        shop.getProductList().add(new Product(20, "yyyy", 80));
-        shop.getProductList().add(new Product(8, "xxxx", 6000));
-        shop.getProductList().add(new Product(2, "dddd", 3000));
-        shop.getProductList().add(new Product(0, "cccc", 4000));
+    /*public ShopBuilder()
+     {
+        shopOptions.getProductList().add(new Product(90, "bbbb", 4500));
+        shopOptions.getProductList().add(new Product(5, "aaaa", 10000));
+        shopOptions.getProductList().add(new Product(20, "yyyy", 80));
+        shopOptions.getProductList().add(new Product(8, "xxxx", 6000));
+        shopOptions.getProductList().add(new Product(2, "dddd", 3000));
+        shopOptions.getProductList().add(new Product(0, "cccc", 4000));
     }*/
 
     private static int hasIntCheckInput() {
@@ -33,13 +34,12 @@ public class ShopNavigation {
 
     public void startMenu() {
 
-        Scanner scanner = new Scanner(System.in);
-        MainMenu mainMenu = new MainMenu();
-        SortListMenu sortListMenu = new SortListMenu();
-
         int switcher;
         boolean statusOfMainMenu = true;
         boolean statusOfPrintMenu = true;
+        Scanner scanner = new Scanner(System.in);
+        MainMenu mainMenu = new MainMenu();
+        SortListMenu sortListMenu = new SortListMenu();
 
         String msgOfEmptyList = "Список товаров пуст.";
         String msgOfValue = "Введите корректное значение";
@@ -81,27 +81,27 @@ public class ShopNavigation {
                             break;
                         }
                     }
-                    System.out.println(shop.productAdd(new Product(id, name, price)));
+                    System.out.println(shopOptions.productAdd(new Product(id, name, price)));
                     System.out.println();
                     break;
                 }
 
                 case 2: {
                     while (true) {
-                        if (shop.getProductList().isEmpty()) {
+                        if (shopOptions.getProductList().isEmpty()) {
                             System.out.println(msgOfEmptyList);
                             break;
                         } else {
                             System.out.print("Введите ID товара, который вы хотите удалить: ");
                             int id = hasIntCheckInput();
                             if (id == -1) {
-                                System.out.println("Введите корректное значение");
+                                System.out.println(msgOfValue);
+                                System.out.println();
                             } else {
-                                if (shop.hasFoundId(id)) {
-                                    shop.productRemove(id);
+                                if (shopOptions.hasFoundId(id)) {
+                                    shopOptions.productRemove(id);
                                     System.out.println();
-                                    shop.printProductList(shop.getProductList(), msgOfEmptyList);
-                                    System.out.println();
+                                    shopOptions.printProductList(shopOptions.getProductList(), msgOfEmptyList);
                                     break;
                                 } else {
                                     System.out.println(msgOfMatchId);
@@ -114,7 +114,7 @@ public class ShopNavigation {
                 }
 
                 case 3: {
-                    if (shop.getProductList().isEmpty()) {
+                    if (shopOptions.getProductList().isEmpty()) {
                         System.out.println(msgOfEmptyList);
                         System.out.println();
                     } else {
@@ -130,7 +130,7 @@ public class ShopNavigation {
                                 System.out.println(msgOfValue);
                                 System.out.println();
                             } else {
-                                if (shop.hasFoundId(id)) {
+                                if (shopOptions.hasFoundId(id)) {
                                     break;
                                 } else {
                                     System.out.println(msgOfMatchId);
@@ -152,13 +152,16 @@ public class ShopNavigation {
                                 break;
                             }
                         }
-                        shop.productChange(id, name, price);
+                        shopOptions.productChange(id, name, price);
                         System.out.println();
                     }
                     break;
                 }
 
                 case 4: {
+                    if (!statusOfPrintMenu) {
+                        statusOfPrintMenu = true;
+                    }
                     while (statusOfPrintMenu) {
                         sortListMenu.printSortListMenu();
                         switcher = hasIntCheckInput();
@@ -166,19 +169,19 @@ public class ShopNavigation {
 
                         switch (switcher) {
                             case 1: {
-                                shop.productSort(shop.getProductList(), new ComparatorByPriceUp(), msgOfEmptyList);
+                                shopOptions.productSort(shopOptions.getProductList(), new ComparatorByPriceUp(), msgOfEmptyList);
                                 break;
                             }
                             case 2: {
-                                shop.productSort(shop.getProductList(), new ComparatorByPriceDown(), msgOfEmptyList);
+                                shopOptions.productSort(shopOptions.getProductList(), new ComparatorByPriceDown(), msgOfEmptyList);
                                 break;
                             }
                             case 3: {
-                                shop.printReverseProductList(shop.getProductList(), msgOfEmptyList);
+                                shopOptions.printReverseProductList(shopOptions.getProductList(), msgOfEmptyList);
                                 break;
                             }
                             case 4: {
-                                shop.printProductList(shop.getProductList(), msgOfEmptyList);
+                                shopOptions.printProductList(shopOptions.getProductList(), msgOfEmptyList);
                                 break;
                             }
                             case 5: {

@@ -1,9 +1,7 @@
 package Products.sorting;
 
 import Products.Product;
-import Shops.Shop;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 public class ComparatorByPriceUp implements Comparator <Product>{

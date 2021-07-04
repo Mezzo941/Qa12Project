@@ -1,7 +1,5 @@
 package Products;
 
-import java.util.Comparator;
-
 public class Product {
     private final int id;
     private String name;
@@ -15,10 +13,6 @@ public class Product {
 
     public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getPrice() {

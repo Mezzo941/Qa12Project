@@ -1,9 +1,8 @@
-import Shops.Shop;
-import Shops.ShopNavigation;
+import Shops.ShopBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        ShopNavigation myFirstShop = new ShopNavigation();
+        ShopBuilder myFirstShop = new ShopBuilder();
         myFirstShop.startMenu();
     }
 }

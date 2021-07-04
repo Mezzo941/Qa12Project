@@ -1,11 +1,10 @@
 package Shops;
 
 import Products.Product;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Shop implements PreShop {
+public class ShopOptions implements PreShop {
 
     private final ArrayList<Product> productList = new ArrayList<>();
 
@@ -38,7 +37,6 @@ public class Shop implements PreShop {
         return check;
     }
 
-
     @Override
     public void productRemove(int id) {
         for (int i = 0; i < productList.size(); i++) {
@@ -69,6 +67,7 @@ public class Shop implements PreShop {
             for (Product item : arrayList) {
                 System.out.println(item);
             }
+            System.out.println();
         } else {
             System.out.println(msg);
             System.out.println();
@@ -82,6 +81,7 @@ public class Shop implements PreShop {
             for (int i = arrayList.size() - 1; i >= 0; i--) {
                 System.out.println(arrayList.get(i));
             }
+            System.out.println();
         } else {
             System.out.println(msg);
             System.out.println();

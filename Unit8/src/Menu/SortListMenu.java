@@ -3,7 +3,7 @@ package Menu;
 public class SortListMenu implements MenuOptions{
 
     private final static String[] sortListMenu = {
-            "Выберите действие:",
+            "Выберите тип сортировки:",
             "1. По возрастанию цены",
             "2. По убыванию цены",
             "3. В обратом порядке добавления товаров",
@@ -15,6 +15,5 @@ public class SortListMenu implements MenuOptions{
     public void printSortListMenu() {
         printMenu(sortListMenu);
     }
-
 }
 

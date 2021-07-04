@@ -3,6 +3,7 @@ package Menu;
 public class MainMenu implements MenuOptions{
 
     private final static String[] mainMenu = {
+            "*Главное меню*",
             "Выберите действие:",
             "1. Добавить товар",
             "2. Удалить товар",
